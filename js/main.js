@@ -171,11 +171,72 @@
     var form = document.getElementById('contact-form');
     if (!form) return;
 
+    var SUBMIT_LIMIT = 3;
+    var LIMIT_WINDOW = 10 * 60 * 1000;
+    var submitKey    = 'vm_submits';
+    var emailRe      = /^[^\s@]{1,64}@[^\s@]{1,253}\.[^\s@]{2,}$/;
+    var phoneRe      = /^[\d\s+\-() ]{7,20}$/;
+
+    function getSubmits() {
+      try { return JSON.parse(sessionStorage.getItem(submitKey) || '[]'); }
+      catch (e) { return []; }
+    }
+
+    function recordSubmit() {
+      try {
+        var now   = Date.now();
+        var times = getSubmits().filter(function (t) { return now - t < LIMIT_WINDOW; });
+        times.push(now);
+        sessionStorage.setItem(submitKey, JSON.stringify(times));
+      } catch (e) {}
+    }
+
+    function isRateLimited() {
+      var now = Date.now();
+      return getSubmits().filter(function (t) { return now - t < LIMIT_WINDOW; }).length >= SUBMIT_LIMIT;
+    }
+
+    function showSuccess() {
+      var submitBtn = form.querySelector('[type="submit"]');
+      var original  = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.textContent = 'Message Sent!';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('btn-success');
+      }
+      form.reset();
+      setTimeout(function () {
+        if (submitBtn) {
+          submitBtn.textContent = original;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('btn-success');
+        }
+      }, 4000);
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      // Honeypot — silently succeed so bots think it worked
+      var hp = form.querySelector('#hp-website');
+      if (hp && hp.value.trim() !== '') { showSuccess(); return; }
+
+      // Rate limiting
+      if (isRateLimited()) {
+        var btn = form.querySelector('[type="submit"]');
+        if (btn) {
+          btn.textContent = 'Too many attempts. Please wait.';
+          btn.disabled = true;
+          setTimeout(function () {
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+          }, 30000);
+        }
+        return;
+      }
+
       var valid = true;
 
-      // Validate required fields
       form.querySelectorAll('[required]').forEach(function (field) {
         var group = field.closest('.form-group');
         if (!field.value.trim()) {
@@ -186,10 +247,8 @@
         }
       });
 
-      // Email pattern check
       var emailField = form.querySelector('#email');
       if (emailField && emailField.value.trim()) {
-        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var emailGroup = emailField.closest('.form-group');
         if (!emailRe.test(emailField.value.trim())) {
           if (emailGroup) emailGroup.classList.add('error');
@@ -197,29 +256,28 @@
         }
       }
 
+      var phoneField = form.querySelector('#phone');
+      if (phoneField && phoneField.value.trim()) {
+        var phoneGroup = phoneField.closest('.form-group');
+        if (!phoneRe.test(phoneField.value.trim())) {
+          if (phoneGroup) phoneGroup.classList.add('error');
+          valid = false;
+        }
+      }
+
+      var msgField = form.querySelector('#message');
+      if (msgField && msgField.value.trim().length < 20) {
+        var msgGroup = msgField.closest('.form-group');
+        if (msgGroup) msgGroup.classList.add('error');
+        valid = false;
+      }
+
       if (!valid) return;
 
-      // Success state
-      var submitBtn = form.querySelector('[type="submit"]');
-      var original  = submitBtn ? submitBtn.textContent : '';
-      if (submitBtn) {
-        submitBtn.textContent = '✓ Message Sent!';
-        submitBtn.disabled = true;
-        submitBtn.classList.add('btn-success');
-      }
-      form.reset();
-
-      // Reset button after 4 s
-      setTimeout(function () {
-        if (submitBtn) {
-          submitBtn.textContent = original;
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('btn-success');
-        }
-      }, 4000);
+      recordSubmit();
+      showSuccess();
     });
 
-    // Clear error on input
     form.querySelectorAll('input, textarea, select').forEach(function (field) {
       field.addEventListener('input', function () {
         var group = field.closest('.form-group');
@@ -299,6 +357,18 @@
       if (e.key === 'ArrowRight') showNext();
       if (e.key === 'ArrowLeft')  showPrev();
     });
+
+    // Touch swipe support for mobile
+    var touchStartX = 0;
+    lb.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) showNext(); else showPrev();
+      }
+    }, { passive: true });
   }
 
 

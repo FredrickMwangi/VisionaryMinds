@@ -249,8 +249,9 @@ main { padding-top: var(--nav-h); }
   color: var(--white);
 }
 
-.btn-lg { padding: 1rem 2.25rem; font-size: 1rem; }
-.btn-sm { padding: 0.5rem 1.25rem; font-size: 0.875rem; }
+.btn-lg    { padding: 1rem 2.25rem; font-size: 1rem; }
+.btn-sm    { padding: 0.5rem 1.25rem; font-size: 0.875rem; }
+.btn-block { width: 100%; }
 
 .btn-success {
   background: #059669 !important;
@@ -1170,6 +1171,23 @@ main { padding-top: var(--nav-h); }
 
 
 /* ── 23. CONTACT PAGE ─────────────────────────────────────── */
+
+/* Honeypot field — visually hidden but not display:none (bots detect that) */
+.form-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Contact form wrapper */
+.contact-form-section {
+  max-width: 780px;
+  margin: 3rem auto 0;
+}
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
