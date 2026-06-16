@@ -676,6 +676,7 @@ main { padding-top: var(--nav-h); }
 .impact-card {
   background: var(--white);
   border: 1px solid var(--border);
+  border-top: 4px solid var(--border);
   border-radius: var(--r-lg);
   padding: 1.875rem;
   display: flex;
@@ -685,26 +686,80 @@ main { padding-top: var(--nav-h); }
 .impact-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--green-light);
 }
+
+/* ── Per-card accent colours (muted palette) ── */
+/* 1 · Financial Literacy — amber */
+.impact-card:nth-child(1) {
+  border-top-color: #C9920D;
+  background: #FEFAEE;
+}
+.impact-card:nth-child(1) .impact-icon { background: #FEF3CC; color: #C9920D; }
+.impact-card:nth-child(1):hover .impact-icon { background: #C9920D; color: var(--white); }
+.impact-card:nth-child(1) .impact-link { color: #C9920D; }
+.impact-card:nth-child(1):hover { border-color: #C9920D; }
+
+/* 2 · Entrepreneurship — teal */
+.impact-card:nth-child(2) {
+  border-top-color: #0E9480;
+  background: #EFF9F7;
+}
+.impact-card:nth-child(2) .impact-icon { background: #CCF0EA; color: #0E9480; }
+.impact-card:nth-child(2):hover .impact-icon { background: #0E9480; color: var(--white); }
+.impact-card:nth-child(2) .impact-link { color: #0E9480; }
+.impact-card:nth-child(2):hover { border-color: #0E9480; }
+
+/* 3 · Leadership — forest green (brand) */
+.impact-card:nth-child(3) {
+  border-top-color: var(--green);
+  background: #EFF7F2;
+}
+.impact-card:nth-child(3) .impact-icon { background: var(--green-light); color: var(--green); }
+.impact-card:nth-child(3):hover .impact-icon { background: var(--green); color: var(--white); }
+.impact-card:nth-child(3) .impact-link { color: var(--green); }
+.impact-card:nth-child(3):hover { border-color: var(--green); }
+
+/* 4 · Digital Skills — steel blue */
+.impact-card:nth-child(4) {
+  border-top-color: #2B5FAD;
+  background: #EFF4FA;
+}
+.impact-card:nth-child(4) .impact-icon { background: #CCDAF4; color: #2B5FAD; }
+.impact-card:nth-child(4):hover .impact-icon { background: #2B5FAD; color: var(--white); }
+.impact-card:nth-child(4) .impact-link { color: #2B5FAD; }
+.impact-card:nth-child(4):hover { border-color: #2B5FAD; }
+
+/* 5 · Community Development — terracotta */
+.impact-card:nth-child(5) {
+  border-top-color: #B85C3A;
+  background: #FAF0EC;
+}
+.impact-card:nth-child(5) .impact-icon { background: #F5D9CE; color: #B85C3A; }
+.impact-card:nth-child(5):hover .impact-icon { background: #B85C3A; color: var(--white); }
+.impact-card:nth-child(5) .impact-link { color: #B85C3A; }
+.impact-card:nth-child(5):hover { border-color: #B85C3A; }
+
+/* 6 · Mentorship — muted purple */
+.impact-card:nth-child(6) {
+  border-top-color: #6B3FA0;
+  background: #F4EFF9;
+}
+.impact-card:nth-child(6) .impact-icon { background: #E0D0F4; color: #6B3FA0; }
+.impact-card:nth-child(6):hover .impact-icon { background: #6B3FA0; color: var(--white); }
+.impact-card:nth-child(6) .impact-link { color: #6B3FA0; }
+.impact-card:nth-child(6):hover { border-color: #6B3FA0; }
 
 .impact-icon {
   width: 56px;
   height: 56px;
-  background: var(--green-light);
   border-radius: var(--r-md);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--green);
   transition: background var(--ease), color var(--ease);
 }
 .impact-icon svg { width: 26px; height: 26px; }
-.impact-card:hover .impact-icon {
-  background: var(--green);
-  color: var(--white);
-}
 
 .impact-card-title {
   font-size: 1.0625rem;
@@ -725,12 +780,11 @@ main { padding-top: var(--nav-h); }
   gap: 0.375rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--green);
   margin-top: auto;
   transition: gap var(--ease), color var(--ease);
 }
 .impact-link svg { width: 14px; height: 14px; }
-.impact-link:hover { gap: 0.625rem; color: var(--green-dark); }
+.impact-link:hover { gap: 0.625rem; opacity: 0.8; }
 
 
 /* ── 14. PROGRAM CARDS (home featured) ───────────────────── */
