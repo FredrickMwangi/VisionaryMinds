@@ -21,6 +21,12 @@
     initContactForm();
     initGalleryLightbox();
     initCounters();
+    initHeroEntrance();
+    initScrollProgress();
+    initHeroParticles();
+    initParallax();
+    initCardTilt();
+    initPageTransition();
   });
 
 
@@ -333,6 +339,143 @@
     }, { threshold: 0.5 });
 
     counters.forEach(function (el) { observer.observe(el); });
+  }
+
+
+  /* ── 10. HERO ENTRANCE ANIMATION ───────────────────────── */
+  function initHeroEntrance() {
+    if (!document.querySelector('.hero')) return;
+    // A double-rAF lets the browser paint the initial opacity:0 state first
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.body.classList.add('hero-ready');
+      });
+    });
+  }
+
+
+  /* ── 11. SCROLL PROGRESS BAR ────────────────────────────── */
+  function initScrollProgress() {
+    var bar = document.createElement('div');
+    bar.id = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.prepend(bar);
+
+    function update() {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+
+  /* ── 12. HERO FLOATING PARTICLES ─────────────────────────── */
+  function initHeroParticles() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'hero-particles';
+    wrap.setAttribute('aria-hidden', 'true');
+
+    for (var i = 0; i < 12; i++) {
+      var dot  = document.createElement('span');
+      var size = (Math.random() * 7 + 4).toFixed(1);        // 4–11 px
+      var left = (Math.random() * 94 + 3).toFixed(1);       // 3–97 %
+      var top  = (Math.random() * 90 + 5).toFixed(1);       // 5–95 %
+      var del  = (Math.random() * 8).toFixed(2);            // 0–8 s delay
+      var dur  = (Math.random() * 12 + 14).toFixed(1);      // 14–26 s duration
+      var gold = i % 3 === 0;                                // every 3rd = faint white
+
+      dot.style.cssText =
+        'position:absolute;border-radius:50%;will-change:transform;' +
+        'width:'  + size + 'px;height:' + size + 'px;' +
+        'left:'   + left + '%;top:' + top + '%;' +
+        'background:' + (gold ? 'rgba(212,160,23,0.22)' : 'rgba(255,255,255,0.10)') + ';' +
+        'animation:particleFloat ' + dur + 's ' + del + 's infinite ease-in-out;';
+
+      wrap.appendChild(dot);
+    }
+
+    hero.appendChild(wrap);
+  }
+
+
+  /* ── 13. HERO PARALLAX ───────────────────────────────────── */
+  function initParallax() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var vh = window.innerHeight;
+
+    function update() {
+      var y = window.scrollY;
+      if (y < vh) {
+        hero.style.backgroundPositionY = 'calc(50% + ' + (y * 0.32).toFixed(1) + 'px)';
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+
+  /* ── 14. CARD 3-D TILT ───────────────────────────────────── */
+  function initCardTilt() {
+    var cards = document.querySelectorAll('.impact-card');
+    if (!cards.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r   = card.getBoundingClientRect();
+        var rx  = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -7;
+        var ry  = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  7;
+        card.style.transform  = 'perspective(700px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-6px)';
+        card.style.transition = 'transform 0.08s ease, box-shadow 0.08s ease';
+        card.style.boxShadow  = '0 18px 42px rgba(0,0,0,0.14)';
+      });
+
+      card.addEventListener('mouseleave', function () {
+        card.style.transform  = '';
+        card.style.boxShadow  = '';
+        card.style.transition = 'transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s ease';
+      });
+    });
+  }
+
+
+  /* ── 15. PAGE FADE TRANSITIONS ───────────────────────────── */
+  function initPageTransition() {
+    // Fade in on arrival
+    document.body.classList.add('page-entering');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.body.classList.remove('page-entering');
+      });
+    });
+
+    // Fade out on departure (internal links only)
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#' ||
+          href.indexOf('http') === 0 ||
+          href.indexOf('mailto') === 0 ||
+          href.indexOf('tel') === 0) return;
+
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var dest = href;
+        document.body.classList.add('page-exiting');
+        setTimeout(function () {
+          window.location.href = dest;
+        }, 300);
+      });
+    });
   }
 
 }());
