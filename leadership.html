@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
 
-  <title>Leadership — Visionary Minds CBO</title>
-  <meta name="description" content="Meet the dedicated leadership team of Visionary Minds CBO — the Chairlady, Secretary, and Treasurer driving community empowerment in Kenya." />
+  <title>Founders &amp; Leadership — Visionary Minds CBO</title>
+  <meta name="description" content="Meet the founders of Visionary Minds CBO — the visionary leaders who built a community empowerment movement from the ground up in Kenya." />
 
-  <meta property="og:title"       content="Leadership — Visionary Minds CBO" />
-  <meta property="og:description" content="Meet the passionate team guiding Visionary Minds toward a future of empowered communities." />
+  <meta property="og:title"       content="Founders &amp; Leadership — Visionary Minds CBO" />
+  <meta property="og:description" content="Meet the founders who built Visionary Minds from a small savings group into a thriving community movement in Kenya." />
   <meta property="og:type"        content="website" />
 
   <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -69,6 +69,74 @@
     .leader-social-btn:hover { background: var(--green); color: var(--white); }
     .leader-social-btn svg { width: 15px; height: 15px; }
 
+    /* Vision quote block */
+    .leader-vision {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--green-light);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    }
+    .leader-vision-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.35rem;
+    }
+    .leader-vision p {
+      font-size: 0.9375rem;
+      color: var(--dark);
+      font-style: italic;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Founders grid: 2-col desktop → 1-col mobile */
+    .leaders-grid--founders {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 768px) {
+      .leaders-grid--founders {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        gap: 1.5rem;
+      }
+
+      .leader-card-xl .leader-body {
+        padding: 1.25rem;
+      }
+
+      .leader-card-xl .leader-name {
+        font-size: 1.2rem;
+      }
+
+      .leader-vision {
+        padding: 0.875rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .leaders-grid--founders {
+        max-width: 100%;
+      }
+
+      .leader-card-xl .leader-body {
+        padding: 1rem;
+      }
+
+      .leader-card-xl .leader-img { aspect-ratio: 4 / 3; }
+
+      .leader-card-xl .leader-name { font-size: 1.125rem; }
+
+      .leader-socials { flex-wrap: wrap; }
+    }
+
     /* Join team CTA card */
     .join-card {
       background: var(--green);
@@ -116,10 +184,10 @@
 <section class="page-hero" aria-labelledby="page-title">
   <div class="container">
     <p class="page-hero-eyebrow">The People Behind the Mission</p>
-    <h1 class="page-hero-title" id="page-title">Our Leadership</h1>
+    <h1 class="page-hero-title" id="page-title">Our Founders</h1>
     <p class="page-hero-desc">
-      A dedicated team of community champions who volunteer their time, skills, and
-      passion to drive the Visionary Minds mission forward.
+      Meet the visionary leaders who believed in a better future for their community and
+      turned that belief into action — building Visionary Minds from the ground up.
     </p>
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
@@ -135,16 +203,62 @@
   <div class="container">
 
     <div class="section-hd section-hd--center" data-fade>
-      <p class="section-eyebrow">Executive Team</p>
-      <h2 class="section-title" id="team-title">Meet the Team</h2>
-      <p class="section-desc">Passionate, accountable, and community-focused — our leaders set the tone for everything Visionary Minds stands for.</p>
+      <p class="section-eyebrow">Founders &amp; Leadership</p>
+      <h2 class="section-title" id="team-title">The People Who Started It All</h2>
+      <p class="section-desc">Driven by purpose and rooted in community — meet the founders whose vision and courage gave Visionary Minds its heartbeat.</p>
     </div>
 
-    <!-- Leader cards grid -->
-    <div class="leaders-grid" style="grid-template-columns: repeat(3,1fr); gap: 2rem;">
+    <!-- Leader cards grid — 2 founders -->
+    <div class="leaders-grid leaders-grid--founders">
+
+      <!-- Founder -->
+      <article class="leader-card leader-card-xl" data-fade data-delay="1">
+        <div class="leader-img">
+          <img src="images/founder.jpg" alt="Founder of Visionary Minds"
+               loading="lazy" decoding="async" width="400" height="533" />
+          <div class="leader-img-ph" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+        </div>
+        <div class="leader-body">
+          <h2 class="leader-name">Founder Name</h2>
+          <p class="leader-role">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Founder
+          </p>
+
+          <p class="leader-bio">
+            A bold thinker and grassroots activist, our founder identified the gap between
+            ambition and opportunity in the community and set out to bridge it. In 2019 they
+            brought together a group of determined women and youth to plant the seed that would
+            grow into Visionary Minds CBO.
+          </p>
+          <p class="leader-bio" style="margin-top:0.75rem;">
+            Their belief that every person deserves a fair chance to succeed became the founding
+            principle that continues to guide every program, every partnership, and every
+            decision made by the organisation.
+          </p>
+
+          <div class="leader-vision">
+            <p class="leader-vision-label">Founding Vision</p>
+            <p>"A community where no one is left behind — where knowledge, opportunity, and dignity are available to all."</p>
+          </div>
+
+          <div class="leader-detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Nairobi, Kenya</span>
+          </div>
+
+          <div class="leader-socials">
+            <a href="#" class="leader-social-btn" aria-label="Founder's Facebook"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="leader-social-btn" aria-label="Founder's LinkedIn"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="leader-social-btn" aria-label="Founder's Twitter"   rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+          </div>
+        </div>
+      </article>
 
       <!-- Chairlady -->
-      <article class="leader-card leader-card-xl" data-fade data-delay="1">
+      <article class="leader-card leader-card-xl" data-fade data-delay="2">
         <div class="leader-img">
           <img src="images/chairlady.jpg" alt="Jane Wanjiku Kamau — Chairlady of Visionary Minds"
                loading="lazy" decoding="async" width="400" height="533" />
@@ -171,6 +285,11 @@
             Community Development and is currently pursuing a Degree in Social Work.
           </p>
 
+          <div class="leader-vision">
+            <p class="leader-vision-label">Her Vision</p>
+            <p>"I see a Kenya where every woman and young person has the tools, the confidence, and the community to build the life they deserve."</p>
+          </div>
+
           <div class="leader-detail-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Nairobi, Kenya</span>
@@ -184,96 +303,6 @@
             <a href="#" class="leader-social-btn" aria-label="Jane's Facebook"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
             <a href="#" class="leader-social-btn" aria-label="Jane's LinkedIn"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
             <a href="#" class="leader-social-btn" aria-label="Jane's Twitter"   rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Secretary -->
-      <article class="leader-card leader-card-xl" data-fade data-delay="2">
-        <div class="leader-img">
-          <img src="images/secretary.jpg" alt="Mary Achieng Otieno — Secretary of Visionary Minds"
-               loading="lazy" decoding="async" width="400" height="533" />
-          <div class="leader-img-ph" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-        </div>
-        <div class="leader-body">
-          <h2 class="leader-name">Mary Achieng Otieno</h2>
-          <p class="leader-role">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Secretary
-          </p>
-
-          <p class="leader-bio">
-            Mary brings exceptional organisational skills and a meticulous approach to records
-            management and communication. She has been with Visionary Minds since its founding,
-            ensuring all governance processes, member records, and correspondence are handled
-            with the highest level of professionalism.
-          </p>
-          <p class="leader-bio" style="margin-top:0.75rem;">
-            She holds a Certificate in Business Administration and has completed training in
-            non-profit governance and project management. Mary is also an active facilitator
-            of the Digital Skills program.
-          </p>
-
-          <div class="leader-detail-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Nairobi, Kenya</span>
-          </div>
-          <div class="leader-detail-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>secretary@visionaryminds.or.ke</span>
-          </div>
-
-          <div class="leader-socials">
-            <a href="#" class="leader-social-btn" aria-label="Mary's Facebook"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="leader-social-btn" aria-label="Mary's LinkedIn"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-            <a href="#" class="leader-social-btn" aria-label="Mary's Twitter"   rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Treasurer -->
-      <article class="leader-card leader-card-xl" data-fade data-delay="3">
-        <div class="leader-img">
-          <img src="images/treasurer.jpg" alt="Ruth Njeri Kamau — Treasurer of Visionary Minds"
-               loading="lazy" decoding="async" width="400" height="533" />
-          <div class="leader-img-ph" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-        </div>
-        <div class="leader-body">
-          <h2 class="leader-name">Ruth Njeri Kamau</h2>
-          <p class="leader-role">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Treasurer
-          </p>
-
-          <p class="leader-bio">
-            Ruth is a certified accountant committed to the financial transparency and
-            accountability of Visionary Minds. She manages all finances, donor reporting,
-            and budget planning with precision and integrity, ensuring every shilling goes
-            toward maximum community impact.
-          </p>
-          <p class="leader-bio" style="margin-top:0.75rem;">
-            She holds a CPA (K) qualification and has experience in NGO financial management.
-            Ruth is also the lead facilitator of the Financial Literacy program, mentoring
-            members on personal and group financial management.
-          </p>
-
-          <div class="leader-detail-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Nairobi, Kenya</span>
-          </div>
-          <div class="leader-detail-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.7 18.5 19.5 19.5 0 0 1 5.5 12.3 19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14 16l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 24 16.92z"/></svg>
-            <span>+254 700 000 003</span>
-          </div>
-
-          <div class="leader-socials">
-            <a href="#" class="leader-social-btn" aria-label="Ruth's Facebook"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="leader-social-btn" aria-label="Ruth's LinkedIn"  rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-            <a href="#" class="leader-social-btn" aria-label="Ruth's Twitter"   rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
           </div>
         </div>
       </article>
